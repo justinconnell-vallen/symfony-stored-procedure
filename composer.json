@@ -1,0 +1,35 @@
+{
+    "name": "vallen-webpack/stored-procedure-bundle",
+    "description": "A reusable factory for executing stored procedures on MSSQL databases using PDO and SqlSrv",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vallen Team",
+            "email": "justin.connell@vallen.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "ext-pdo": "*",
+        "sentry/sentry": "^3.0|^4.0"
+    },
+    "suggest": {
+        "ext-sqlsrv": "For native SQL Server support"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vallen\\StoredProcedureFactory\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vallen\\StoredProcedureFactory\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0|^10.0"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

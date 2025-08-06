@@ -33,7 +33,7 @@ Add the package to your `composer.json`:
         }
     ],
     "require": {
-        "vallen/stored-procedure-factory": "*"
+        "vallen-webpack/stored-procedure-bundle": "*"
     }
 }
 ```
@@ -49,7 +49,7 @@ composer install
 If you publish this to a private repository:
 
 ```bash
-composer require vallen/stored-procedure-factory
+composer require vallen-webpack/stored-procedure-bundle
 ```
 
 ## Usage
@@ -107,17 +107,27 @@ $results = $factory->runProcedure(
 
 ### Symfony Integration
 
-Add to your `services.yaml`:
+This package provides two ways to integrate with Symfony:
 
-```yaml
-Vallen\StoredProcedureFactory\StoredProcedureFactory:
-    bind:
-        $hostname: '%env(resolve:SP_HOST)%'
-        $pwd: '%env(resolve:SP_PASS)%'
-        $username: '%env(resolve:SP_USER)%'
+1. Register the bundle in your `config/bundles.php`:
+
+```php
+return [
+    // ... other bundles
+    Vallen\StoredProcedureFactory\VallenStoredProcedureBundle::class => ['all' => true],
+];
 ```
 
-Then inject it into your services:
+2. Configure the bundle in `config/packages/vallen_webpack_stored_procedure_bundle.yaml`:
+
+```yaml
+vallen_stored_procedure:
+    hostname: '%env(SP_HOST)%'
+    username: '%env(SP_USER)%'
+    password: '%env(SP_PASS)%'
+```
+
+3. The service will be automatically available for autowiring:
 
 ```php
 use Vallen\StoredProcedureFactory\StoredProcedureFactory;

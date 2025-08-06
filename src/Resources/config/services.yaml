@@ -1,0 +1,12 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Vallen\StoredProcedureFactory\StoredProcedureFactory:
+        arguments:
+            $hostname: '%vallen_stored_procedure.hostname%'
+            $username: '%vallen_stored_procedure.username%'
+            $pwd: '%vallen_stored_procedure.password%'
+        public: true
